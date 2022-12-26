@@ -14,7 +14,7 @@ class CharacterListLocalServiceImpl @Inject constructor(val db: RickAndMortyDB) 
     private val characterDoa: CharacterDoa = db.getCharacterDoa()
     private val characterInfoDoa: CharacterInfoDoa = db.getCharacterInfoDoa()
 
-    override suspend fun isEmpty(): Boolean = db.getCharacterDoa().getCount() <= 0
+    override suspend fun isEmpty(): Boolean = characterDoa.getCount() <= 0
 
     override suspend fun insert(dto: CharacterListDto) {
         dto.results.forEach {

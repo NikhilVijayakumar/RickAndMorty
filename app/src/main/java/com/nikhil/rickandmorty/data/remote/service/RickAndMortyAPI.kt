@@ -17,7 +17,7 @@ interface RickAndMortyAPI {
    suspend fun getAllCharacters(): CharacterListDto
 
     @GET("character/{id}")
-    suspend fun getCharacter(@Path("id") id: String): CharacterDetailsDto
+    suspend fun getCharacter(@Path("id") id: Int): CharacterDetailsDto
 
     @GET("character/{id}")
     suspend fun getMultipleCharacters(@Path("id") id: String): List<CharacterDetailsDto>
