@@ -75,6 +75,9 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.3"
     implementation("androidx.room:room-paging:2.4.3")
 
+    kapt project(":xml_story_generator")
+    compileOnly project(":xml_story")
+
 
     //hilt
     implementation 'com.google.dagger:hilt-android:2.44.2'
@@ -88,10 +91,11 @@ dependencies {
     //hilt
     androidTestImplementation  'com.google.dagger:hilt-android-testing:2.44.2'
     kaptAndroidTest 'com.google.dagger:hilt-compiler:2.44.2'
-
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
     //Unit test
     testImplementation 'junit:junit:4.13.2'
     //hilt
     testImplementation 'com.google.dagger:hilt-android-testing:2.44.2'
     kaptTest 'com.google.dagger:hilt-compiler:2.44.2'
 }
+

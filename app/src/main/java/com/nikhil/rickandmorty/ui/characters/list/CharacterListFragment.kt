@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.nikhil.rickandmorty.data.remote.dto.characters.list.CharacterLocation
+import com.nikhil.rickandmorty.data.remote.dto.characters.list.toMap
 import com.nikhil.rickandmorty.databinding.FragmentCharacterListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -63,6 +65,7 @@ class CharacterListFragment : Fragment() {
                         //Empty
                     }
                 }
+               CharacterLocation("xxx","fff").toMap()
             }
         }
     }

@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "RickAndMorty"
 include ':app'
+
+include ':xml_story'
+include ':xml_story_generator'
