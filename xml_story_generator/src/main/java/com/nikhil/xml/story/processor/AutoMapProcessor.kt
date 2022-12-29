@@ -1,10 +1,9 @@
-package com.nikhil.xml.story.generator
+package com.nikhil.xml.story.processor
 
 import com.google.auto.service.AutoService
 import com.nikhil.xml.story.annotation.AutoMap
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
-import java.io.File
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.Element
@@ -12,44 +11,23 @@ import javax.lang.model.element.TypeElement
 import javax.lang.model.element.VariableElement
 
 @AutoService(Processor::class)
-@SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedOptions(AutoMapGenerator.OPTION_NAME)
-class AutoMapGenerator : AbstractProcessor() {
-
-    companion object {
-        const val OPTION_NAME = "kapt.kotlin.generated"
-    }
-
-    private fun getRootFile(): File {
-        val file = File(getGeneratedSourcesRoot())
-        file.mkdir()
-        return file
-    }
-
-
-
-    private fun getGeneratedSourcesRoot(): String {
-        val generatedSourcesRoot: String = processingEnv.options[OPTION_NAME].orEmpty()
-        if (generatedSourcesRoot.isEmpty()) {
-            processingEnv.messager.errormessage { "Can't find the target directory for generated Kotlin files." }
-        }
-        return generatedSourcesRoot
-    }
+@SupportedSourceVersion(SourceVersion.RELEASE_11)
+@SupportedOptions(StoryProcessor.OPTION_NAME)
+class AutoMapProcessor : StoryProcessor() {
 
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
         return mutableSetOf(AutoMap::class.java.canonicalName)
     }
 
-
     override fun process(annotations: Set<TypeElement>, roundEnv: RoundEnvironment): Boolean {
-        filterModules(roundEnv.getElementsAnnotatedWith(AutoMap::class.java))
+        filterElements(roundEnv.getElementsAnnotatedWith(AutoMap::class.java))
         return true
     }
 
-    private fun filterModules(elements: MutableSet<out Element>) {
+    private fun filterElements(elements: MutableSet<out Element>) {
         for (element in elements) {
             if (element !is TypeElement) {
-                processingEnv.messager.errormessage { "Not a class" }
+                errorMessage("Not a class")
                 continue
             }
             val variable: List<Pair<String, TypeElement?>> = element.enclosedElements
