@@ -78,6 +78,7 @@ class AutoMapProcessor : StoryProcessor() {
             .build()
 
         FileSpec.builder(className.packageName, "${className.simpleName}MapGenerated")
+
             .addFunction(funSpec)
             .addFileComment("This is a generated file. Do not edit")
             .build()

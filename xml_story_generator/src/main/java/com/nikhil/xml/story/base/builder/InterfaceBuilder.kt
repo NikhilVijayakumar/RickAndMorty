@@ -1,6 +1,6 @@
-package com.nikhil.xml.story.builder
+package com.nikhil.xml.story.base.builder
 
-import com.nikhil.xml.story.data.InterfaceData
+import com.nikhil.xml.story.base.data.InterfaceData
 import com.squareup.kotlinpoet.TypeSpec
 
 

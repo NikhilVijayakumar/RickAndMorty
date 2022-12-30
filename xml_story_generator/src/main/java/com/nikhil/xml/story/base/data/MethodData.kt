@@ -1,4 +1,4 @@
-package com.nikhil.xml.story.data
+package com.nikhil.xml.story.base.data
 
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec

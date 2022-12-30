@@ -1,6 +1,6 @@
-package com.nikhil.xml.story.builder
+package com.nikhil.xml.story.base.builder
 
-import com.nikhil.xml.story.data.MethodData
+import com.nikhil.xml.story.base.data.MethodData
 import com.squareup.kotlinpoet.FunSpec
 
 class FunctionBuilder(private val data: MethodData) {

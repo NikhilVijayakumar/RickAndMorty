@@ -1,6 +1,6 @@
-package com.nikhil.xml.story.builder
+package com.nikhil.xml.story.base.builder
 
-import com.nikhil.xml.story.data.PropertyData
+import com.nikhil.xml.story.base.data.PropertyData
 import com.squareup.kotlinpoet.PropertySpec
 
 class PropertyBuilder(private val data: PropertyData) {
